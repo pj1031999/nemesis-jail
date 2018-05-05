@@ -1,4 +1,4 @@
-FROM debian:buster
+FROM debian:stretch-slim
 LABEL maintainer "Paweł Jasiak <contact@jasiak.xyz>"
 
 RUN apt-get update && apt-get install -y \

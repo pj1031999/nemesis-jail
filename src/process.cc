@@ -14,7 +14,7 @@ Nemesis::Process::Process::Process() {
 }
 
 Nemesis::Process::Process::~Process() {
-  if (usage != NULL) {
+  if (usage != nullptr) {
     delete usage;
     usage = nullptr;
   }
@@ -188,7 +188,7 @@ void Nemesis::Process::Process::child() {
 
   pid_t pid = getpid();
   if (setpriority(PRIO_PROCESS, pid, -20) != 0)
-    error("setpriority error");
+    error("setpriority error\n");
 
   FILE *in = fopen(path_input.c_str(), "r");
   FILE *out = fopen(path_output.c_str(), "w");
