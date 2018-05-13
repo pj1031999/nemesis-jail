@@ -39,6 +39,10 @@ void Nemesis::Process::Process::set_seccomp() {
                        SCMP_A0(SCMP_CMP_LE, 2)) < 0)
     panic("seccomp rule add error write\n");
 
+  if (seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(writev), 1,
+                       SCMP_A0(SCMP_CMP_LE, 2)) < 0)
+    panic("seccomp rule add error writev");
+
   if (seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(execve), 1,
                        SCMP_A0(SCMP_CMP_EQ, (scmp_datum_t)path_exec_pointer)) < 0)
     panic("seccomp rule add error execve\n");
